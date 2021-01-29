@@ -1,5 +1,6 @@
 <?php
 
+use App\Code\V1\Users\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,10 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/tokens/create', [UserController::class, 'createToken']);
 
-Route::middleware('auth:sanctum')->prefix('api')->group(function() {
-
+Route::middleware('auth:sanctum')->prefix('v1')->group(function() {
+    Route::get('user', [UserController::class, 'getUser']);
+    Route::post('send', [UserController::class, 'getUser']);
 });
