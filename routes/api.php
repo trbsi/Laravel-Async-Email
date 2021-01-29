@@ -1,5 +1,6 @@
 <?php
 
+use App\Code\V1\Emails\Controllers\EmailController;
 use App\Code\V1\Users\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,5 +20,8 @@ Route::post('/tokens/create', [UserController::class, 'createToken']);
 
 Route::middleware('auth:sanctum')->prefix('v1')->group(function() {
     Route::get('user', [UserController::class, 'getUser']);
-    Route::post('send', [UserController::class, 'getUser']);
+    Route::prefix('email')->group(function() {
+        Route::post('send', [EmailController::class, 'send']);
+    });
+    Route::post('send', [EmailController::class, 'send']);
 });

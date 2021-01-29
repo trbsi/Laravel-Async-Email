@@ -1,10 +1,28 @@
 <?php
 
-
 namespace App\Code\V1\Emails\Controllers;
 
+use App\Code\V1\Emails\Services\Senders\Jobs\ProcessEmailsJob;
+use Illuminate\Http\Request;
 
 class EmailController
 {
+    public function send(Request $request)
+    {
+        $validated = $request->validate([
+            '*.email' => 'required|email',
+            '*.subject' => 'required',
+            '*.body' => 'required',
+            '*.attachments' => 'array',
+        ]);
 
+        foreach ($validated as $emailData) {
+            ProcessEmailsJob::dispatch(
+                $emailData['email'],
+                $emailData['subject'],
+                $emailData['body'],
+                $emailData['attachments'],
+            );
+        }
+    }
 }
