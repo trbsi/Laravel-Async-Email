@@ -3,6 +3,7 @@
 namespace App\Code\V1\Emails\Controllers;
 
 use App\Code\V1\Emails\Services\Senders\Jobs\ProcessEmailsJob;
+use App\Models\Email;
 use Illuminate\Http\Request;
 
 class EmailController
@@ -24,5 +25,11 @@ class EmailController
                 $emailData['attachments'],
             );
         }
+    }
+
+    public function list()
+    {
+        $data = Email::with(['attachments'])->get();
+        return response()->json($data);
     }
 }

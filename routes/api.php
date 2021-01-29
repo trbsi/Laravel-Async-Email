@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->prefix('v1')->group(function() {
     Route::get('user', [UserController::class, 'getUser']);
     Route::prefix('email')->group(function() {
         Route::post('send', [EmailController::class, 'send']);
+        Route::get('list', [EmailController::class, 'list']);
     });
     Route::post('send', [EmailController::class, 'send']);
 });
