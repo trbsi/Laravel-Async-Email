@@ -43,11 +43,13 @@ class SendEmail extends Mailable
             ]);
 
         foreach ($this->emailData->getAttachments() as $attachment) {
-            $builtEmail
+            $builtEmail = $builtEmail
                 ->attachFromStorage(
                     $attachment->getRelativePath(),
                     $attachment->getName()
                 );
         }
+
+        return $builtEmail;
     }
 }
