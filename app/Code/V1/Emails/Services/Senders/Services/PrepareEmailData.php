@@ -23,6 +23,7 @@ class PrepareEmailData
         array $attachments = []
     ): EmailData {
         $attachments = $this->processAttachments->process($attachments);
+
         $emailData = new EmailData(
             $email,
             $subject,

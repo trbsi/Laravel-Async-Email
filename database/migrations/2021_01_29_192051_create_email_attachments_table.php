@@ -15,7 +15,7 @@ class CreateEmailAttachmentsTable extends Migration
     {
         Schema::create('email_attachments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('email_id')->constrained();
+            $table->foreignId('email_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->text('attachment');
             $table->timestamps();
         });

@@ -14,7 +14,9 @@ class EmailController
             '*.email' => 'required|email',
             '*.subject' => 'required',
             '*.body' => 'required',
-            '*.attachments' => 'array',
+            '*.attachments' => 'present|array',
+            '*.attachments.*.value' => 'required|string',
+            '*.attachments.*.name' => 'required|string',
         ]);
 
         foreach ($validated as $emailData) {

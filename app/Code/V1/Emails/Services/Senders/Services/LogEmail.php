@@ -6,7 +6,7 @@ use App\Code\V1\Emails\Services\Senders\Values\Attachment;
 use App\Code\V1\Emails\Services\Senders\Values\EmailData;
 use App\Models\Email;
 
-class LogEmails
+class LogEmail
 {
     public function log(EmailData $emailData)
     {
@@ -16,8 +16,9 @@ class LogEmails
         $email->body = $emailData->getBody();
         $email->save();
 
-
-        $attachments = $email->attachments()->createMany($this->prepareAttachmentNames($emailData->getAttachments()));
+        if ([] !== $emailData->getAttachments()) {
+            $email->attachments()->createMany($this->prepareAttachmentNames($emailData->getAttachments()));
+        }
     }
 
     /**

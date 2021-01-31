@@ -3,7 +3,7 @@
 namespace App\Code\V1\Emails\Services\Senders\Jobs;
 
 use App\Code\V1\Emails\Services\Senders\Mails\SendEmail;
-use App\Code\V1\Emails\Services\Senders\Services\LogEmails;
+use App\Code\V1\Emails\Services\Senders\Services\LogEmail;
 use App\Code\V1\Emails\Services\Senders\Services\PrepareEmailData;
 use App\Code\V1\Emails\Services\Senders\Services\ProcessAttachments;
 use App\Code\V1\Emails\Services\Senders\Values\EmailData;
@@ -61,7 +61,7 @@ class ProcessEmailsJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle(PrepareEmailData $prepareEmailData, LogEmails $logEmails)
+    public function handle(PrepareEmailData $prepareEmailData, LogEmail $logEmails)
     {
         $emailData = $prepareEmailData->prepareData(
             $this->email,
