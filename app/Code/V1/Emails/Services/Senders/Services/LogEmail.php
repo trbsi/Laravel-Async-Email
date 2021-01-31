@@ -29,7 +29,10 @@ class LogEmail
     {
         $data = [];
         foreach ($attachments as $attachment) {
-            $data[]['attachment'] = $attachment->getRelativePathWithFileName();
+            $data[] = [
+                'attachment' => $attachment->getRelativePathWithFileName(),
+                'name' => $attachment->getName()
+            ];
         }
 
         return $data;

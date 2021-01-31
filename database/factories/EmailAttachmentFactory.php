@@ -22,7 +22,8 @@ class EmailAttachmentFactory extends Factory
     public function definition()
     {
         return [
-            'attachment' => sprintf('email_attachments/2021-01-29/%s.jpg', $this->faker->word)
+            'attachment' => sprintf('email_attachments/2021-01-29/%s.jpg', $this->faker->word),
+            'name' => $this->faker->word
         ];
     }
 }

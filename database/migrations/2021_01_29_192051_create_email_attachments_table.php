@@ -17,6 +17,7 @@ class CreateEmailAttachmentsTable extends Migration
             $table->id();
             $table->foreignId('email_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->text('attachment');
+            $table->string('name', 20);
             $table->timestamps();
         });
     }

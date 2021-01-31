@@ -143,6 +143,7 @@ class EmailControllerTest extends TestCase
                         'id',
                         'email_id',
                         'attachment',
+                        'name',
                         'created_at',
                         'updated_at'
                     ],
@@ -150,6 +151,7 @@ class EmailControllerTest extends TestCase
                         'id',
                         'email_id',
                         'attachment',
+                        'name',
                         'created_at',
                         'updated_at'
                     ],
